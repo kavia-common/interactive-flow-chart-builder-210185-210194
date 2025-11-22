@@ -1,0 +1,4 @@
+{
+    "command": "npm start -- --port <port> --host <host>",
+    "working_directory": "/home/kavia/workspace/code-generation/interactive-flow-chart-builder-210185-210194/flow_chart_frontend"
+}
