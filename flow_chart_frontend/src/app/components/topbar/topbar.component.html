@@ -1,0 +1,15 @@
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">◧</span>
+    <div class="titles">
+      <strong>Flow Editor</strong>
+      <small>Ocean Professional</small>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="secondary" (click)="newDiagram()">New</button>
+    <button (click)="triggerFile(fileInput)">Import</button>
+    <button class="primary" (click)="exportJson()">Export</button>
+    <input #fileInput type="file" accept="application/json" (change)="onFileChange($event)" hidden>
+  </div>
+</header>

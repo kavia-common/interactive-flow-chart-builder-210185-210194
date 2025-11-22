@@ -1,0 +1,26 @@
+.inspector {
+  height: 100%;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-left: 1px solid #E5E7EB;
+}
+
+h3 {
+  font-size: 14px;
+  color: #6B7280;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.muted { color: #6B7280; }
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label { display: flex; flex-direction: column; gap: 6px; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }

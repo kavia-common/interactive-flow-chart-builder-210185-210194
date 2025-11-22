@@ -1,16 +1,55 @@
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #ffffff;
+:root {
+  --primary: #2563EB;
+  --secondary: #F59E0B;
+  --error: #EF4444;
+  --bg: #F9FAFB;
+  --surface: #FFFFFF;
+  --text: #111827;
+  --muted: #6B7280;
+  --border: #E5E7EB;
+  --grid: #E5E7EB;
 }
 
-h1 {
-  color: #1976d2;
-  font-size: 3rem;
-  font-weight: 500;
-  margin: 0;
-  text-align: center;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  color: var(--text);
+  background: linear-gradient(180deg, #2563EB1A, #F9FAFB 18%);
+}
+
+.editor {
+  display: grid;
+  grid-template-columns: 280px 1fr 320px;
+  grid-template-rows: 1fr;
+  gap: 0;
+  flex: 1;
+  min-height: 0;
+}
+
+app-toolbar {
+  border-right: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.workspace {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+}
+
+app-inspector {
+  background: var(--surface);
+}
+
+app-minimap {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  z-index: 5;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  border-radius: 8px;
+  overflow: hidden;
 }

@@ -1,0 +1,62 @@
+<div class="canvas" #canvasArea
+     [ngStyle]="backgroundPatternStyle()"
+     (mousedown)="onBackgroundDown($event)"
+     (mousemove)="onBackgroundMove($event)"
+     (mouseup)="onBackgroundUp($event)"
+     (wheel)="onWheel($event)">
+
+  <!-- World content -->
+  <div class="world" [style.transform]="transform">
+
+    <!-- Edges -->
+    <svg class="edges" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5"
+                markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563EB"></path>
+        </marker>
+      </defs>
+      <ng-container *ngFor="let e of flow.edges()()">
+        <path [attr.d]="flow.edgePath(e)" stroke="#2563EB" stroke-width="2"
+              fill="transparent" marker-end="url(#arrow)"></path>
+      </ng-container>
+
+      <!-- Preview line while connecting -->
+      <ng-container *ngIf="drag.kind === 'connect'">
+        <path [attr.d]="flow.tempEdgePath(drag)"
+              stroke="#2563EB" stroke-dasharray="6 4" stroke-width="2" fill="transparent"></path>
+      </ng-container>
+    </svg>
+
+    <!-- Nodes -->
+    <div class="node"
+         *ngFor="let node of flow.nodes()(); trackBy: trackNode"
+         [class.selected]="selection.isSelected(node.id)"
+         [style.left.px]="node.x"
+         [style.top.px]="node.y"
+         [style.width.px]="node.width"
+         [style.height.px]="node.height"
+         (mousedown)="onNodeDown($event, node)">
+
+      <div class="node-header" [style.background]="node.type === 'action' ? 'rgba(37,99,235,.08)' : 'rgba(245,158,11,.12)'">
+        <span class="badge">{{ node.type }}</span>
+        <span class="title">{{ node.label }}</span>
+      </div>
+
+      <div class="ports">
+        <div class="port left" (mousedown)="connectFrom(node, 'left', $event)" title="Connect from left"></div>
+        <div class="port right" (mousedown)="connectFrom(node, 'right', $event)" title="Connect from right"></div>
+        <div class="port top" (mousedown)="connectFrom(node, 'top', $event)" title="Connect from top"></div>
+        <div class="port bottom" (mousedown)="connectFrom(node, 'bottom', $event)" title="Connect from bottom"></div>
+      </div>
+    </div>
+
+    <!-- Marquee selection rectangle -->
+    <div *ngIf="drag.kind === 'marquee'" class="marquee"
+         [style.left.px]="Math.min(drag.startX, drag.curX)"
+         [style.top.px]="Math.min(drag.startY, drag.curY)"
+         [style.width.px]="Math.abs(drag.curX - drag.startX)"
+         [style.height.px]="Math.abs(drag.curY - drag.startY)"></div>
+
+  </div>
+</div>

@@ -1,0 +1,12 @@
+.minimap {
+  background: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.view {
+  fill: rgba(245,158,11,.15);
+  stroke: #F59E0B;
+  stroke-width: 2;
+}

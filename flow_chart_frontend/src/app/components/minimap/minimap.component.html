@@ -1,0 +1,15 @@
+<div class="minimap">
+  <svg [attr.width]="220" [attr.height]="160">
+    <g [attr.transform]="'scale(' + scale + ')'">
+      <ng-container *ngFor="let n of flow.nodes()()">
+        <rect [attr.x]="n.x" [attr.y]="n.y" [attr.width]="n.width" [attr.height]="n.height"
+              fill="#93C5FD" stroke="#1D4ED8" stroke-width="4"></rect>
+      </ng-container>
+      <ng-container *ngFor="let e of flow.edges()()">
+        <path [attr.d]="flow.edgePath(e)" stroke="#2563EB" stroke-width="8" fill="transparent"></path>
+      </ng-container>
+    </g>
+    <rect class="view" [attr.x]="viewRect().left" [attr.y]="viewRect().top"
+          [attr.width]="viewRect().width" [attr.height]="viewRect().height"></rect>
+  </svg>
+</div>

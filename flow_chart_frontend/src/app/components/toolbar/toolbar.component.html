@@ -1,0 +1,17 @@
+<aside class="toolbar">
+  <div class="section">
+    <div class="title">Nodes</div>
+    <button class="primary" (click)="addActionNode()">+ Action</button>
+    <button (click)="addOutcomeNode()">+ Outcome</button>
+  </div>
+  <hr>
+  <div class="section">
+    <div class="title">View</div>
+    <button (click)="fitView()">Fit</button>
+  </div>
+  <hr>
+  <div class="section">
+    <div class="title">Settings</div>
+    <button (click)="toggleSnap()">{{ flow.snapEnabled() ? 'Disable' : 'Enable' }} Snap</button>
+  </div>
+</aside>
